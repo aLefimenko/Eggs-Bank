@@ -5,7 +5,10 @@ using System.Text;
 
 interface IUpgrade
 {
-    float UpgradeObject();
-    void SellObject();
+    float UpgradeObject(float _value);
+    float SellObject(float _value);
+    void BuyObject();
+    void SetData(int level);
+    void RedData();
 }
 

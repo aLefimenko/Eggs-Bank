@@ -3,26 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 
 class Click : Object, IUpgrade
 {
-    public void SellObject()
+    public float SellObject(float _value)
     {
-        
+        return score - value * 0.7f;
     }
 
-    public float UpgradeObject()
+    public float UpgradeObject(float _value)
     {
-        return Mathf.Sqrt
+        return Mathf.Exp(_value);
     }
 
     void Start()
     {
         type = "click";
         level = 0;
-        value = Mathf.Pow(10f, level * 2.5f);
-        eggsPerSecond = UpgradeObject();
+        RedData();
+    }
+    
+    public void BuyObject()
+    {
+        level++;
+        RedData();
     }
 
-  
+    public void RedData()
+    {
+         value = Mathf.Exp(level);
+         score = UpgradeObject(value);
+    }
+
+    public void SetData(int _level)
+    {
+        level = _level;
+        RedData();
+    }
 }
