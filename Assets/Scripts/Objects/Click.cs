@@ -5,17 +5,8 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
-class Click : Object, IUpgrade
+class Click : Example, IUpgrade
 {
-    public float SellObject(float _value)
-    {
-        return score - value * 0.7f;
-    }
-
-    public float UpgradeObject(float _value)
-    {
-        return Mathf.Exp(_value);
-    }
 
     void Start()
     {
@@ -32,8 +23,9 @@ class Click : Object, IUpgrade
 
     public void RedData()
     {
-         value = Mathf.Exp(level);
-         score = UpgradeObject(value);
+        value = Mathf.Exp(level);
+        score -= value;
+        eggsPerSecond = UpgradeObject(value);
     }
 
     public void SetData(int _level)
