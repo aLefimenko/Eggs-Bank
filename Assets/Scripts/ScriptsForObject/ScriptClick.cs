@@ -9,6 +9,7 @@ class ScriptClick : Click
     void OnMouseDown()
     {
         BuyObject();
+        StartGet();
     }
 }
 

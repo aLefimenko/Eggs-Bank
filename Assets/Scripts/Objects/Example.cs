@@ -1,16 +1,18 @@
 ﻿using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 
 public abstract class Example : MonoBehaviour
 {
     protected string type;
     protected int level;
-    protected float value;
-    protected float eggsPerSecond;
-    protected int upgrade;
-    protected float score;
+    protected float value; // стоимость
+    protected float eggsPerSecond; // заработок в секунду
+    protected int upgrade; // уровень апгрейда
+    protected float score; // 
+    protected Coroutine corTime;
     //public FirstBase dataBase;
 
     void Start()
@@ -29,4 +31,16 @@ public abstract class Example : MonoBehaviour
         return Mathf.Exp(_value);
     }
 
+    public void StartGet()
+    {
+        StartCoroutine(Return());
+    }
+
+    IEnumerator Return()
+    {
+        yield return new WaitForSeconds(1f);
+        score += eggsPerSecond;
+        Debug.Log(score.ToString() + "   " + eggsPerSecond.ToString());
+
+    }
 }
